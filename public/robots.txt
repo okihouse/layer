@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+User-agent: Googlebot-image
+User-agent: Yeti
+User-agent: NaverBot
+User-agent: Daum
+User-agent: Daumoa
+User-agent: kakaotalk-scrap
+Crawl-delay: 1
+Allow: /$
+Allow: /favicon.ico
+Allow: /views/*
