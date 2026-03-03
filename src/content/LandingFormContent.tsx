@@ -1,7 +1,5 @@
 import { Checkbox, Flex, Form, FormInstance, Input, InputNumber, Radio, Select, Typography } from "antd"
 import { FunctionComponent, ReactNode, useState } from "react"
-import { PrivacyTermDrawer } from "../drawer/PrivacyTermDrawer"
-import { ThreePartyTermDrawer } from "../drawer/ThreePartyTermDrawer"
 import { LandingModel } from "../model/LandingModel"
 import { GenderType } from "../type/GenderType"
 import { LandingDbItemType } from "../type/LandingDbItemType"
@@ -210,25 +208,6 @@ export const LandingFormContent: FunctionComponent<IProps> = (props) => {
                 </Form>
             </Flex>
             {children}
-
-            {privacyTerm && (
-                <PrivacyTermDrawer
-                    id={id}
-                    title={privacyTerm}
-                    onClosed={() => {
-                        setPrivacyTerm(null)
-                    }}
-                />
-            )}
-
-            {threePartyTerm && (
-                <ThreePartyTermDrawer
-                    title={threePartyTerm}
-                    onClosed={() => {
-                        setThreePartyTerm(null)
-                    }}
-                />
-            )}
         </>
     )
 }

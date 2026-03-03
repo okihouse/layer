@@ -160,6 +160,10 @@ html {
     }
 }
 
+.ant-select-selection-placeholder, .ant-select-arrow, .ant-select {
+    font-size: 16px !important;
+}
+
 .ant-layout {
     background-color: #ffffff !important;
 
@@ -486,7 +490,7 @@ html {
 .ant-form {
     &.product {
         label {
-            font-size: 18px !important;
+            font-size: 16px !important;
         }
     }
 }
