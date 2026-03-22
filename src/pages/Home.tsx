@@ -99,7 +99,7 @@ export const Home: FunctionComponent = () => {
                     style={{ width: '100%' }}
                 />
             </Col>
-            <Col span={24} style={{ textAlign: 'center', backgroundColor: '#F6F1E8 !important', paddingBottom: 64 }}>
+            <Col span={24} style={{ textAlign: 'center', backgroundColor: '#F6F1E8', paddingBottom: 64 }}>
                 <Swiper
                     modules={[Autoplay, Pagination]}
                     slidesPerView={2}          // 한 번에 2개 노출
@@ -114,7 +114,7 @@ export const Home: FunctionComponent = () => {
                         clickable: true,         // 클릭 가능하게 설정
                         dynamicBullets: false,   // 4개 고정을 위해 false (기본값)
                     }}
-                    style={{ paddingBottom: '40px' }}
+                    style={{ paddingBottom: '40px', backgroundColor: '#F6F1E8' }}
                     breakpoints={{
                         320: {
                             slidesPerView: 1,
