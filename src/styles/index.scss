@@ -542,19 +542,16 @@ html {
 
     :root,
     body,
-    html {
-        background: #fff !important;
-        color: #000 !important;
-    }
+    html {}
 
     /* 특정 요소가 다크모드 영향을 받을 경우 대비 */
     * {
-        background-color: #fff !important;
-        color: #000 !important;
+        // background-color: #fff !important;
+        // color: #000 !important;
         filter: none !important;
     }
 
     label {
-        color: #000 !important;
+        // color: #000 !important;
     }
 }
