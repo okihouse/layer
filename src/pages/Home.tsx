@@ -40,6 +40,18 @@ export const Home: FunctionComponent = () => {
                 messageApi.error('상담 분야를 선택해 주세요.')
                 return
             }
+            if (!privacy) {
+                messageApi.error('개인정보 처리방침에 동의해 주세요.')
+                return
+            }
+            if (!marketing) {
+                messageApi.error('마케팅 정보 수신에 동의해 주세요.')
+                return
+            }
+            if (!thirdparty) {
+                messageApi.error('제3자 정보 제공에 동의해 주세요.')
+                return
+            }
             setLoading(true)
             const msg = `[상담신청] 이름: ${values.name}, 연락처: ${values.phone}, 분야: ${type}, 채무금액: ${values.budget}`
             await SmsService.send(values.phone, msg)
