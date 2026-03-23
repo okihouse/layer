@@ -21,15 +21,17 @@ app.post('/send-sms', async (req, res) => {
     }
 
     const params = querystring.stringify({
-        key: process.env.ALIGO_KEY,
-        user_id: process.env.ALIGO_USER_ID,
-        sender: process.env.ALIGO_SENDER,
+        key: 'slk2iaoby5f9zl5xz5hkj31u7cuwlsgv',
+        user_id: 'soullaw',
+        sender: '010-9049-1492',
         receiver,
         msg,
     });
+    console.log(params);
 
     try {
         const result = await callAligo(params);
+        console.log(result);
         return res.json(result);
     } catch (err) {
         return res.status(500).json({ error: err.message });

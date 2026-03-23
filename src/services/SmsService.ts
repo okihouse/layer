@@ -1,4 +1,4 @@
-const SMS_API_URL = 'https://7grgbk06sl.execute-api.ap-northeast-2.amazonaws.com/production/send-sms';
+const SMS_API_URL = 'http://13.124.195.233:3001/send-sms';
 
 export const SmsService = {
     send: async (receiver: string, msg: string) => {
