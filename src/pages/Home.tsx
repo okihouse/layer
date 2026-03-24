@@ -54,7 +54,7 @@ export const Home: FunctionComponent = () => {
             }
             setLoading(true)
             const msg = `[상담신청] 이름: ${values.name}, 연락처: ${values.phone}, 분야: ${type}, 채무금액: ${values.budget}`
-            await SmsService.send(values.phone, msg)
+            await SmsService.send('01090491492', msg)
             messageApi.success('상담 신청이 완료되었습니다!')
             form.resetFields()
         } catch (err: any) {
