@@ -1,9 +1,9 @@
-import { Button, Checkbox, Col, Flex, Form, Input, List, message, Row, Select, Tag, Typography } from 'antd'
+import { Button, Checkbox, Col, Flex, Form, Input, message, Row, Select, Typography } from 'antd'
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
-import { SmsService } from '../services/SmsService'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Image1, Image10, Image11, Image2, Image3, Image4, Image5, Image6, Image7, Image8, Image9, Slide1, Slide2, Slide3, Slide4, SubmitButton } from '../assets'
+import { SmsService } from '../services/SmsService'
 
 import { useForm } from 'antd/es/form/Form'
 import 'swiper/css'
@@ -40,22 +40,32 @@ export const Home: FunctionComponent = () => {
                 messageApi.error('상담 분야를 선택해 주세요.')
                 return
             }
-            if (!privacy) {
+            if (!values.privacy) {
                 messageApi.error('개인정보 처리방침에 동의해 주세요.')
                 return
             }
-            if (!marketing) {
+            if (!values.marketing) {
                 messageApi.error('마케팅 정보 수신에 동의해 주세요.')
                 return
             }
-            if (!thirdparty) {
+            if (!values.thirdparty) {
                 messageApi.error('제3자 정보 제공에 동의해 주세요.')
                 return
             }
             setLoading(true)
             const msg = `[상담신청] 이름: ${values.name}, 연락처: ${values.phone}, 분야: ${type}, 채무금액: ${values.budget}`
             await SmsService.send(values.phone, msg)
-            messageApi.success('상담 신청이 완료되었습니다!')
+            messageApi.open({
+                content: (
+                    <div style={{ maxWidth: 520, minWidth: 375, textAlign: 'left', borderBlock: '1px solid #fff' }}>
+                        <div style={{ paddingInline: 16, paddingBlock: 12 }}>
+                            <div style={{ fontSize: '16px', fontWeight: 500, color: '#CFC4BA', textAlign: 'center' }}>
+                                상담 신청이 완료되었습니다!
+                            </div>
+                        </div>
+                    </div>
+                ),
+            })
             form.resetFields()
         } catch (err: any) {
             if (err?.errorFields) return // 유효성 검사 실패는 antd가 처리
@@ -308,6 +318,7 @@ export const Home: FunctionComponent = () => {
 
                     <Flex justify="space-between" align='baseline'>
                         <Form.Item
+                            name={'privacy'}
                             initialValue={true}
                             valuePropName="checked"
                             style={{ margin: 0, }}
@@ -332,12 +343,13 @@ export const Home: FunctionComponent = () => {
 
                     <Flex justify="space-between" align='baseline'>
                         <Form.Item
+                            name={'marketing'}
                             initialValue={true}
                             valuePropName="checked"
                             style={{ margin: 0, }}
                             rules={[
                                 {
-                                    validator: (_, value) => value ? Promise.resolve() : Promise.reject(new Error('개인정보 수집 동의 해주세요.')),
+                                    validator: (_, value) => value ? Promise.resolve() : Promise.reject(new Error('마케팅 수신에 동의 해주세요.')),
                                 },
                             ]}
                         >
@@ -356,12 +368,13 @@ export const Home: FunctionComponent = () => {
 
                     <Flex justify="space-between" align='baseline'>
                         <Form.Item
+                            name={'thirdparty'}
                             initialValue={true}
                             valuePropName="checked"
                             style={{ margin: 0, }}
                             rules={[
                                 {
-                                    validator: (_, value) => value ? Promise.resolve() : Promise.reject(new Error('개인정보 수집 동의 해주세요.')),
+                                    validator: (_, value) => value ? Promise.resolve() : Promise.reject(new Error('제3자 제공 및 활용 동의 해주세요.')),
                                 },
                             ]}
                         >
