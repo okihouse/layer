@@ -54,7 +54,7 @@ export const Home: FunctionComponent = () => {
             }
             setLoading(true)
             const msg = `[상담신청] 이름: ${values.name}, 연락처: ${values.phone}, 분야: ${type}, 채무금액: ${values.budget}`
-            await SmsService.send(values.phone, msg)
+            await SmsService.send('01090491492', msg)
             messageApi.open({
                 content: (
                     <div style={{ maxWidth: 520, minWidth: 375, textAlign: 'left', borderBlock: '1px solid #fff' }}>
